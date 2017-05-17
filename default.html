@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //默认值,以前这么写
+        function Animal(name){
+            this.name = name || 'animal';
+        }
+
+
+        // es6这么写
+        function Cat(name = 'kitty'){
+            this.name = name;
+        }
+
+        var cat1 = new Cat();
+        console.log(cat1.name === 'kitty'); // true
+
+        var cat1 = new Cat('mouse');
+        console.log(cat1.name === 'mouse'); // true
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         extends-4-old存在问题，由于"直接继承prototype"存在上述的缺点，
+         所以利用一个空对象作为中介。
+         */
+        function Animal() {
+        }
+        Animal.prototype.species = "动物";
+
+
+        function Cat(name, color) {
+            this.name = name;
+            this.color = color;
+        }
+
+        function extend(Child,Parent){
+            var F = function(){};
+            F.prototype = Parent.prototype;
+            Child.prototype = new F();
+            Child.prototype.constructor = Child;
+
+        }
+
+        extend(Cat,Animal);
+
+        var cat1 = new Cat('cat1', 'black');
+
+        console.log(cat1.species);
+        console.log(cat1 instanceof Cat); // true
+        console.log(cat1 instanceof Animal); // true
+        console.log(Cat.prototype.constructor === Animal); // false
+        console.log(cat1.constructor === Cat.prototype.constructor); // true
+        console.log(cat1.constructor === Animal); // false
+        console.log(cat1.constructor === Cat);// true
+        console.log(Animal.prototype.constructor === Cat) // false
+
+        
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

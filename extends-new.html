@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        class Animal {
+            constructor(){
+                this.type = 'animal';
+            }
+            says(say){
+                console.log(this.type + ' says ' + say);
+            }
+        }
+
+        let animal = new Animal();
+        animal.says('hello'); //animal says hello
+
+        class Cat extends Animal {
+            constructor(){
+                super();
+                this.type = 'cat';
+            }
+        }
+
+        let cat1 = new Cat();
+        let cat2 = new Cat();
+        cat1.says('hello'); //cat says hello
+
+
+        console.log(cat1 instanceof Cat); // true
+        console.log(cat1 instanceof Animal); // true
+        console.log(Cat.prototype.constructor === Animal); // false
+        console.log(cat1.constructor === Cat.prototype.constructor); // true
+        console.log(cat1.constructor === Animal); // false
+        console.log(cat1.constructor === Cat);// true
+        console.log(Animal.prototype.constructor === Cat) // false
+        console.log(cat1.says === cat2.says) // true
+    </script>
+</head>
+<body>
+
+</body>
+</html>

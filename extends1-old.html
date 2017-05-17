@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function Animal() {
+            this.species = "动物"
+        }
+
+        function Cat(name, color) {
+            Animal.apply(this, arguments)
+            this.name = name
+            this.color = color
+        }
+
+        var cat1 = new Cat('cat1', 'black')
+        console.log(cat1.species) // 动物
+        console.log(cat1 instanceof Cat) // true
+        console.log(cat1 instanceof Animal) // false 这样继承 有问题
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

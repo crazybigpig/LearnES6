@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function Animal() {
+            this.species = "动物"
+        }
+
+        function Cat(name, color) {
+            this.name = name
+            this.color = color
+        }
+
+        Cat.prototype = new Animal()
+        Cat.prototype.constructor = Cat; //使继承链正确
+
+        var cat1 = new Cat('cat1', 'black')
+        console.log(cat1.species)
+        console.log(cat1 instanceof Cat) // true
+        console.log(cat1 instanceof Animal) // true
+        console.log(Cat.prototype.constructor === Animal) // false
+        console.log(cat1.constructor === Cat.prototype.constructor) // true
+        console.log(cat1.constructor === Animal) // false
+        console.log(cat1.constructor === Cat) // true
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

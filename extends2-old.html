@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function Animal() {
+            this.species = "动物"
+        }
+
+        function Cat(name, color) {
+            this.name = name
+            this.color = color
+        }
+
+        Cat.prototype = new Animal()
+
+        var cat1 = new Cat('cat1', 'black')
+        console.log(cat1.species)
+        console.log(cat1 instanceof Cat) // true
+        console.log(cat1 instanceof Animal) // true
+        console.log(Cat.prototype.constructor === Animal) // true
+        console.log(cat1.constructor === Cat.prototype.constructor) // true
+        console.log(cat1.constructor === Animal) // true
+
+        /*
+         这显然会导致继承链的紊乱,cat1明明是用构造函数Cat生成的，
+         因此我们必须手动纠正，将Cat.prototype对象的constructor值改为Cat。
+         extends3-old.html修正了此问题
+         */
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

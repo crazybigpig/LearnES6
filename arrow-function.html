@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+         箭头函数看上去是匿名函数的一种简写，但实际上，
+         箭头函数和匿名函数有个明显的区别：箭头函数内部的this是词法作用域，由上下文确定。
+         */
+
+
+        function sayHello() {
+            console.log('Hello');
+        }
+
+        (() => {
+            console.log('Hello');
+        })();
+
+        class Animal {
+            constructor() {
+                this.type = 'animal'
+            }
+
+            says1(sth) {
+                setTimeout(function () {
+                    console.log(this.type + ' says ' + sth)
+                }, 1000)
+            }
+
+            says2(sth) {
+                setTimeout(() => {
+                    console.log(this.type + ' says ' + sth)
+                }, 1000)
+            }
+        }
+
+        var animal = new Animal();
+        animal.says1('hi') ; //undefined says hi
+        animal.says2('hi')
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
